@@ -1,0 +1,29 @@
+.animated-bg {
+    background-color: #121212; /* Dark background color */
+    overflow: hidden; /* Hide overflowing stars */
+    margin: 0;
+    padding: 0;
+}
+
+.non-animated-bg {
+    background-color: #222; /* Another background color after login */
+}
+
+.star {
+    position: absolute;
+    background-color: #fff; /* Color of the pixel cube (star) */
+    width: 20px;
+    height: 20px;
+    animation: falling 5s linear infinite;
+}
+
+@keyframes falling {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
