@@ -1,7 +1,8 @@
 import requests
 from django.http import JsonResponse
 import json
-import creds
+import os
+from dotenv import load_dotenv
 
 
 def request_error():
@@ -12,8 +13,8 @@ def request_error():
 def set_data(authorization_code):
     return {
         "grant_type": "authorization_code",
-        "client_id": creds.client_id,
-        "client_secret": creds.client_secret,
+        "client_id": os.environ.get("CLIENT_ID"),
+        "client_secret": os.environ.get("CLIENT_SECRET"),
         "code": authorization_code,
         "redirect_uri": "http://localhost:5173/",
     }

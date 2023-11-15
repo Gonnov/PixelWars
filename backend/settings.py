@@ -12,17 +12,19 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
-import authentification.creds as creds
+from dotenv import load_dotenv
+
+# import authentification.creds as creds
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+load_dotenv()
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = creds.SECRET_KEY
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -91,9 +93,9 @@ WSGI_APPLICATION = "backend.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "pixelDB",
-        "USER": "pixelwars",  # NEED TO HIDE THE USER
-        "PASSWORD": "Pixelwars69",  # NEED TO HIDE THE PASSWORD
+        "NAME": "pixelwarsDB",
+        "USER": os.environ.get("DB_USER"),  # NEED TO HIDE THE USER
+        "PASSWORD": os.environ.get("DB_PASS"),  # NEED TO HIDE THE PASSWORD
         "HOST": "localhost",
         "PORT": "5432",
     }
